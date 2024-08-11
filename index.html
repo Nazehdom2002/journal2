@@ -6,7 +6,7 @@
     <title>Effective Journaling</title>
     <style>
         body {
-            background-color: gold;
+            background-image: url('https://www.example.com/chart-background.jpg'); /* Replace with your actual image URL */
             background-size: cover;
             background-attachment: fixed;
             background-repeat: no-repeat;
@@ -16,7 +16,7 @@
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
             padding: 20px;
             border-radius: 10px;
             max-width: 1200px;
@@ -81,6 +81,22 @@
 
         .upload input[type="file"] {
             width: 100%;
+        }
+
+        .navigation button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -217,8 +233,8 @@
 
         <!-- Navigation Buttons -->
         <div class="navigation">
-            <button onclick="goBack()">Previous Trade</button>
-            <button onclick="goForward()">Next Trade</button>
+            <button type="button" onclick="goBack()">Previous Trade</button>
+            <button type="button" onclick="goForward()">Next Trade</button>
         </div>
 
         <!-- New Entry Button -->
@@ -245,4 +261,4 @@
         window.onload = calculateGainLoss;
     </script>
 </body>
-</html
+</html>
