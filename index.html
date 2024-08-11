@@ -6,38 +6,29 @@
     <title>Effective Journaling</title>
     <style>
         body {
-            background-image: url('https://www.example.com/chart-background.jpg'); /* Replace with your actual image URL */
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-position: center;
+            background-color: #f0f8ff;
             color: #333;
             font-family: Arial, sans-serif;
+            background-image: url('https://example.com/chart-background.jpg'); /* Replace with your chart image URL */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-blur: 5px; /* Note: This is not a valid CSS property. */
         }
-
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 1200px;
+            max-width: 800px;
             margin: auto;
-        }
-
-        header {
-            background-color: #ff6f61;
-            color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
-            text-align: center;
-            font-size: 24px;
-            border-radius: 10px 10px 0 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         h2 {
             font-size: 22px;
             text-transform: capitalize;
             margin-bottom: 10px;
+            color: #ff6f61;
         }
-
         textarea, input[type="text"], input[type="number"], input[type="date"], input[type="file"], select, button {
             width: 100%;
             padding: 10px;
@@ -48,87 +39,71 @@
             background-color: #333;
             color: #fff;
         }
-
-        button.new-entry {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            text-transform: capitalize;
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
             font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
         }
-
+        button:hover {
+            background-color: #45a049;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-
         th, td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
             background-color: #333;
         }
-
         th {
             background-color: #444;
         }
-
         .upload {
             display: flex;
             justify-content: space-between;
         }
-
         .upload input[type="file"] {
             width: 100%;
         }
-
-        .navigation button {
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #333;
-            color: #fff;
-            border-radius: 5px;
-            border: none;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
         .navigation {
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
             margin-top: 20px;
+        }
+        .navigation button {
+            background-color: #2196F3;
+        }
+        .navigation button:hover {
+            background-color: #1976D2;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>Effective Journaling</header>
-
         <!-- Market Analyzed Section -->
         <div class="section">
             <h2>Market Analyzed</h2>
             <input type="text" placeholder="e.g., Forex, Stocks, Commodities">
-        </div>
-
-        <!-- Trade Details Section -->
-        <div class="section">
-            <h2>Trade Details</h2>
             <label>Trade Number: <input type="number" placeholder="1, 2, 3, etc."></label>
             <label>Instrument: <input type="text" placeholder="e.g., EUR/USD, Apple (AAPL)"></label>
             <label>Position Size: <input type="text" placeholder="e.g., 1 Lot, 100 Shares"></label>
             <label>Entry Price: <input type="text" placeholder="Insert Entry Price"></label>
             <label>Exit Price: <input type="text" placeholder="Insert Exit Price"></label>
             <label>Trade Direction: <input type="text" placeholder="Long/Short"></label>
-            <label>Timeframe: <input type="text" placeholder="e.g., 15-Min, 1-Hour, Daily"></label>
         </div>
 
         <!-- Reason for Entry Section -->
         <div class="section">
             <h2>Reason for Entry</h2>
             <textarea rows="2" placeholder="Enter reason for entry..."></textarea>
-            <label>Technical Analysis: <input type="checkbox"></label>
-            <label>Fundamental Analysis: <input type="checkbox"></label>
-            <label>Other: <input type="text" placeholder="Describe"></label>
             <div class="upload">
                 <label>Chart: <input type="file"></label>
             </div>
@@ -152,14 +127,25 @@
                     <th>% Gain/Loss</th>
                 </tr>
                 <tr>
-                    <td><input type="date"></td>
-                    <td><input type="text" placeholder="Order Price"></td>
-                    <td><input type="text" placeholder="Filled Price"></td>
-                    <td><input type="text" placeholder="Slippage"></td>
-                    <td><input type="text" placeholder="Filled Shares"></td>
-                    <td><input type="text" placeholder="Total Cost"></td>
-                    <td><input type="text" placeholder="Day's High"></td>
-                    <td><input type="text" placeholder="Day's Low"></td>
+                    <td><input type="date" value="2014-02-10"></td>
+                    <td><input type="text" value="$51.77"></td>
+                    <td><input type="text" value="$51.77"></td>
+                    <td><input type="text" value="$0.00"></td>
+                    <td><input type="text" value="200"></td>
+                    <td><input type="text" value="$10,354.00"></td>
+                    <td><input type="text" value="$52.49"></td>
+                    <td><input type="text" value="$51.75"></td>
+                    <td><input type="text" id="gain-loss" readonly></td>
+                </tr>
+                <tr>
+                    <td><input type="date" value="2014-02-13"></td>
+                    <td><input type="text" value="$53.78"></td>
+                    <td><input type="text" value="$53.78"></td>
+                    <td><input type="text" value="$0.00"></td>
+                    <td><input type="text" value="200"></td>
+                    <td><input type="text" value="$10,756.00"></td>
+                    <td><input type="text" value="$54.49"></td>
+                    <td><input type="text" value="$53.39"></td>
                     <td><input type="text" id="gain-loss" readonly></td>
                 </tr>
             </table>
@@ -168,11 +154,7 @@
         <!-- Reason for Exit Section -->
         <div class="section">
             <h2>Reason for Exit</h2>
-            <textarea rows="2" placeholder="Enter reason for exit..."></textarea>
-            <label>Target Hit: <input type="checkbox"></label>
-            <label>Stop-Loss Triggered: <input type="checkbox"></label>
-            <label>Manual Exit: <input type="checkbox"></label>
-            <label>Other: <input type="text" placeholder="Describe"></label>
+            <textarea rows="2" placeholder="Enter reason for exit...">almost hit target, looked like might be reversing in the morning</textarea>
             <div class="upload">
                 <label>Chart: <input type="file"></label>
             </div>
@@ -184,34 +166,14 @@
         <div class="section">
             <h2>Exit Tactic</h2>
             <select>
-                <option value="21 Hit target">Hit target</option>
-                <option value="22 Hit stop">Hit stop</option>
-                <option value="23 Hit value">Hit value</option>
-                <option value="24 Trade going nowhere">Trade going nowhere</option>
-                <option value="25 Started turning">Started turning</option>
-                <option value="26 Couldn't stand the pain">Couldn't stand the pain</option>
-                <option value="27 Junk trade">Junk trade</option>
+                <option value="21 Hit target">21 Hit target</option>
+                <option value="22 Hit stop">22 Hit stop</option>
+                <option value="23 Hit value">23 Hit value</option>
+                <option value="24 Trade going nowhere">24 Trade going nowhere</option>
+                <option value="25 Started turning">25 Started turning</option>
+                <option value="26 Couldn't stand the pain">26 Couldn't stand the pain</option>
+                <option value="27 Junk trade">27 Junk trade</option>
             </select>
-        </div>
-
-        <!-- Outcome Section -->
-        <div class="section">
-            <h2>Outcome</h2>
-            <label>Profit: <input type="checkbox"></label>
-            <label>Loss: <input type="checkbox"></label>
-            <label>Break-Even: <input type="checkbox"></label>
-            <label>P/L (in $ or %): <input type="text" placeholder="Insert Profit/Loss Amount"></label>
-        </div>
-
-        <!-- Emotions During Trade Section -->
-        <div class="section">
-            <h2>Emotions During Trade</h2>
-            <label>Confident: <input type="checkbox"></label>
-            <label>Nervous: <input type="checkbox"></label>
-            <label>Fearful: <input type="checkbox"></label>
-            <label>Greedy: <input type="checkbox"></label>
-            <label>Calm: <input type="checkbox"></label>
-            <label>Other: <input type="text" placeholder="Describe"></label>
         </div>
 
         <!-- Post Trade Analysis Section -->
@@ -258,7 +220,13 @@
             window.history.forward();
         }
 
-        window.onload = calculateGainLoss;
+        document.querySelector('.new-entry').addEventListener('click', function() {
+            // Clear all fields for a new entry
+            document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => el.value = '');
+            document.querySelectorAll('input[type="date"]').forEach(el => el.value = '');
+            document.querySelector('select').selectedIndex = 0;
+            document.querySelector('input[type="file"]').value = '';
+        });
     </script>
 </body>
 </html>
